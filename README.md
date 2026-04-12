@@ -139,12 +139,13 @@ School shop for uniform orders.
 
 ---
 
-# 🛠️ Technologies Planned
+# 🛠️ Technologies Used
 
-- Python
-- HTML/CSS
-- SQLite (or PostgreSQL)
-- Virtual environment (.venv)
+- **Python** - core programming language
+- **Django** - web framework for models, views, admin, and routing
+- **HTML/CSS** - fromt-end structure and styling
+- **SQLite** - default development database
+- **Virtual environment (.venv)** - dependency isolation
 
 ---
 
