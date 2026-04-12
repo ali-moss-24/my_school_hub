@@ -149,6 +149,35 @@ School shop for uniform orders.
 
 ---
 
+## 🧱 Tech Stack Diagram 
+
+```mermaid
+flowchart TD
+
+    subgraph UserSide[User Interface]
+        Student[Student\nSelects Meals]
+        Kitchen[Kitchen Staff\nViews Totals]
+        Admin[Admin\nManages Meals]
+    end
+
+    subgraph DatabaseLayer[Database]
+        SQLite[(SQLite Database)\ndb.sqlite3]
+    end
+
+    Student --> Views
+    Kitchen --> Views
+    Admin --> AdminPanel
+
+    Views --> Templates
+    Views --> Models
+    AdminPanel --> Models
+
+    Models --> SQLite
+
+```
+---
+
+
 
 # 📦 Setup & Installation
 
