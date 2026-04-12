@@ -1,8 +1,8 @@
-<nav style="margin-bottom:20px;">
-    <a href="/menu/1/">Week 1</a> |
-    <a href="/menu/2/">Week 2</a> |
-    <a href="/menu/3/">Week 3</a> 
-</nav>
+<div style="margin-bottom:20px;">
+    <a href="/menu/1/" class="week-btn">Week 1</a> 
+    <a href="/menu/2/" class="week-btn">Week 2</a> 
+    <a href="/menu/3/" class="week-btn">Week 3</a> 
+</div>
 
 <style>
     body {
@@ -10,6 +10,7 @@
         margin: 20px
     }
 
+  
     h1 {
         text-align: center;
         margin-bottom: 30px;
@@ -20,20 +21,44 @@
     }
 
     .day-block {
-        background: #f5f5f5
-        padding: 15px
-        margin-bottom: 20px
-        border-radius: 8px
+        background: #f5f5f5;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .meal-item {
-        margin-bottom: 10pmx;
+        margin-bottom: 10px;
         background: #fff;
         padding: 10px;
         border: 1px solid #ddd;
-        border-radius: 6px
+        border-radius: 6px;
     }
 
+    .meal-item strong {
+        font-size: 1.1rem;
+    }
+
+    .week-container {
+        padding: 10px;
+    }
+
+    .week-selector {
+            margin-bottom: 20px;
+        }
+
+    .week-btn {
+        display: inline-block;
+        padding: 8px 14px;
+        margin-right: 10px;
+        background: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+        transition: background 0.2s ease;
+        }
 </style>
 
 <h1>Week {{ week_number }} Menu</h1>
