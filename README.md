@@ -161,7 +161,7 @@ flowchart TD
     end
 
     subgraph DatabaseLayer[Database]
-        SQLite[(SQLite Database)\ndb.sqlite3]
+        SQLite[(SQLite Database<br>db.sqlite3)]
     end
 
     Student --> Views
