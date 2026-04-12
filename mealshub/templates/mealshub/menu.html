@@ -1,0 +1,51 @@
+<nav style="margin-bottom:20px;">
+    <a href="/menu/1/">Week 1</a> |
+    <a href="/menu/2/">Week 2</a> |
+    <a href="/menu/3/">Week 3</a> 
+</nav>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .day-block h2 {
+        margin-top: 0;
+    }
+
+    .meal-item {
+        margin-bottom: 10pm;
+    }
+</style>
+
+<h1>Week {{ week_number }} Menu</h1>
+
+{% for day, meals in grouped_meals.items %}
+<div class="day-block">
+    <h2>
+        {% if day == 'Mon' %}Monday{% endif %}
+        {% if day == 'Tue' %}Tuesday{% endif %}
+        {% if day == 'Wed' %}Wednesday{% endif %}
+        {% if day == 'Thu' %}Thursday{% endif %}
+        {% if day == 'Fri' %}Friday{% endif %}
+    </h2>
+
+    {% if meals %}
+        {% for meal in meals %}
+            <div class="meal-item">
+                    <strong>{{ meal.name }}</strong><br>
+                    {{ meal.description }}<br>
+                    £{{ meal.price }}
+            </div>
+            {% endfor %}
+    {% else %}
+        <p>No meals for this day.</p>
+    {% endif %}
+  </div>  
+{% endfor %}
