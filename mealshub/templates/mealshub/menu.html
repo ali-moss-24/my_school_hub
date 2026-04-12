@@ -19,15 +19,28 @@
         margin-top: 0;
     }
 
-    .meal-item {
-        margin-bottom: 10pm;
+    .day-block {
+        background: #f5f5f5
+        padding: 15px
+        margin-bottom: 20px
+        border-radius: 8px
     }
+
+    .meal-item {
+        margin-bottom: 10pmx;
+        background: #fff;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 6px
+    }
+
 </style>
 
 <h1>Week {{ week_number }} Menu</h1>
 
-{% for day, meals in grouped_meals.items %}
-<div class="day-block">
+<div class="week-container">
+    {% for day, meals in grouped_meals.items %}
+        <div class="day-block">
     <h2>
         {% if day == 'Mon' %}Monday{% endif %}
         {% if day == 'Tue' %}Tuesday{% endif %}
@@ -49,3 +62,4 @@
     {% endif %}
   </div>  
 {% endfor %}
+</div>
