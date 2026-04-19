@@ -75,7 +75,7 @@
             background-color: #bfc8d6; /* soft grey-blue */
             color: #555;
             cursor: default;
-            pointer-events: non; /* disables clicking */
+            pointer-events: none; /* disables clicking */
         }
 
         a.coming-soon span {
@@ -89,6 +89,10 @@
             background-color: #bfc8d6;
         }
 
+        .menu a i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
 
         /* footer styling */
         footer {
@@ -110,11 +114,12 @@
     </header>
 
     <div class="menu">
-        <a href="/menu/1/"><i class="fa-solid fa-utensils></i> MealsHub</a>
-        <a href="#">AttendanceHub</a>
-        <a href="#">SafeGuardHub</a>
-        <a href="#">CommsHub</a>
-        <a href="#">UniformHub</a>
+        <a href="/menu/1/"><i class="fa-solid fa-utensils"></i> MealsHub</a>
+
+        <a class="coming-soon"><i class="fa-solid fa-clipboard-check"></i> AttendanceHub <span>(coming soon)</span></a>
+        <a class="coming-soon"><i class="fa-solid fa-shield-heart"></i>SafeGuardHub <span>(coming soon)</span></a>
+        <a class="coming-soon"><i class="fa-solid fa-comments"></i>CommsHub <span>(coming soon)</span></a>
+        <a class="coming-soon"><i class="fa-solid fa-shirt"></i>UniformHub <span>(coming soon)</span></a>
     </div>
 
 </body>
