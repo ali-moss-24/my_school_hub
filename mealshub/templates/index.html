@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MySchoolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
     <style>
         body {
@@ -69,6 +71,25 @@
             background-color: #1f54b8;
         }
 
+        a.coming-soon {
+            background-color: #bfc8d6; /* soft grey-blue */
+            color: #555;
+            cursor: default;
+            pointer-events: non; /* disables clicking */
+        }
+
+        a.coming-soon span {
+            font-size: 0.9rem;
+            color: #777;
+            margin-right: 5px;
+        }
+
+        /* Remove hover effect for coming soon button*/
+        a.coming-soon:hover {
+            background-color: #bfc8d6;
+        }
+
+
         /* footer styling */
         footer {
             margin-top: auto;
@@ -89,7 +110,7 @@
     </header>
 
     <div class="menu">
-        <a href="/menu/1/">MealsHub</a>
+        <a href="/menu/1/"><i class="fa-solid fa-utensils></i> MealsHub</a>
         <a href="#">AttendanceHub</a>
         <a href="#">SafeGuardHub</a>
         <a href="#">CommsHub</a>
