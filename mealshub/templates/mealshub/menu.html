@@ -1,9 +1,9 @@
 <a href="/" class="return-btn">← Back to Home</a>
 
 <div style="margin-bottom:20px;">
-    <a href="/menu/1/" class="week-btn">Week 1</a> 
-    <a href="/menu/2/" class="week-btn">Week 2</a> 
-    <a href="/menu/3/" class="week-btn">Week 3</a> 
+    <a href="/menu/1/" class="week-btn {% if week_number ==1 %}active{% endif %}">Week 1</a> 
+    <a href="/menu/2/" class="week-btn {% if week_number ==2 %}active{% endif %}">Week 2</a> 
+    <a href="/menu/3/" class="week-btn {% if week_number ==3 %}active{% endif %}">Week 3</a> 
 </div>
 
 <style>
@@ -54,13 +54,18 @@
         display: inline-block;
         padding: 8px 14px;
         margin-right: 10px;
-        background: #007bff;
-        color: white;
+        background: #bfc8d6; /* default grey */
+        color: #333;
         text-decoration: none;
         border-radius: 6px;
         font-weight: bold;
         transition: background 0.2s ease;
         }
+
+    .week-btn.active {
+        background: #007bff; /* hightlight color */
+        color: white;
+    }
 
     .return-btn {
         display: inline-block;
