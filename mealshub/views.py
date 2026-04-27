@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Meal
+from .forms import OrderForm
 
 
 def home(request):
@@ -22,3 +23,23 @@ def menu_view(request, week_number):
     }
 
     return render(request, "mealshub/menu.html", context)
+
+    # Order a meal
+def order_meal(request, meal_id):
+    meal = get_object_or_404(Meal, id=meal_id)
+
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.meal = meal
+            order.save()
+            return redirect('order_success')
+        else:
+            form = OrderForm()
+
+        return render(request, 'mealshub/order_meal.html', {'meal':meal, 'form': form})
+    
+    # Sucess page
+def order_success(request):
+    return render(request, 'mealshub/order_success.html')
