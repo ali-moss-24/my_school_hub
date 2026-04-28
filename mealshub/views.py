@@ -8,9 +8,13 @@ def home(request):
 
 
 def menu_view(request, week_number):
-    meals = Meal.objects.filter(week=week_number, is_available=True).order_by('day', 'name')
+    meals = Meal.objects.filter(
+        week=week_number,
+        is_available=True
+        ).order_by('day', 'name')
 
-    # Group meals by day
+
+# Group meals by day
     days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
     grouped = {day: [] for day in days}
 
@@ -24,7 +28,8 @@ def menu_view(request, week_number):
 
     return render(request, "mealshub/menu.html", context)
 
-    # Order a meal
+
+# Order a meal
 def order_meal(request, meal_id):
     meal = get_object_or_404(Meal, id=meal_id)
 
@@ -38,8 +43,13 @@ def order_meal(request, meal_id):
         else:
             form = OrderForm()
 
-        return render(request, 'mealshub/order_meal.html', {'meal':meal, 'form': form})
-    
-    # Sucess page
+        return render(
+            request,
+            'mealshub/order_meal.html',
+            {'meal': meal, 'form': form}
+            )
+
+
+# Sucess page
 def order_success(request):
     return render(request, 'mealshub/order_success.html')
