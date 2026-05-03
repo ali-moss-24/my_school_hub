@@ -47,7 +47,7 @@ def order_meal(request, meal_id):
             request,
             'mealshub/order_meal.html',
             {'meal': meal, 'form': form}
-            )
+        )
 
 
 # Sucess page
