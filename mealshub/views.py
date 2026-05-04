@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Meal
-from .forms import OrderForm
+from django.contrib import messages
+from .models import Meal, Order
 
 
 def home(request):
@@ -29,27 +29,39 @@ def menu_view(request, week_number):
     return render(request, "mealshub/menu.html", context)
 
 
-# Order a meal
-def order_meal(request, meal_id):
-    meal = get_object_or_404(Meal, id=meal_id)
-
-    if request.method == 'POST':
-        form = OrderForm(request.POST)
-        if form.is_valid():
-            order = form.save(commit=False)
-            order.meal = meal
-            order.save()
-            return redirect('order_success')
-        else:
-            form = OrderForm()
-
-        return render(
-            request,
-            'mealshub/order_meal.html',
-            {'meal': meal, 'form': form}
-        )
-
-
 # Sucess page
 def order_success(request):
     return render(request, 'mealshub/order_success.html')
+
+# Weekly order
+def weekly_order_submit(request, week_number):
+    if request.method == 'POST':
+        
+        days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+
+# Validate meals FIRST (so error shows if name is missing)  
+        for day in days:
+            selected = request.POST.getlist(f"meal_{day}")
+            if len(selected) > 1:
+                messages.error(request, f"Please select only ONE meal for the {day}.")
+                return redirect('menu', week_number=week_number)
+
+# Now validate student name
+        student = request.POST.get('student')
+        if not student:
+            messages.error(request, "Please enter the student name.")
+            return redirect('menu', week_number=week_number)
+
+            
+# Create orders (one per day)
+        for day in days:
+            if len(selected) == 1:
+                meal = Meal.objects.get(id=selected[0])
+                Order.objects.create(
+                    student=student,
+                    meal=meal,
+                    date=meal.date
+                )
+
+        return redirect('order_success')
+    return redirect('menu', week_number=week_number)

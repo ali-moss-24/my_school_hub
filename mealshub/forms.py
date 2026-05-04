@@ -1,13 +1,13 @@
 from django import forms
-from .models import Order
+from .models import Order, Meal
 
 
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ['student', 'date', 'notes']
+        fields = ['student', 'notes']
 
     widgets = {
-        'date': forms.DateInput(attrs={'type': 'date'}),
         'notes': forms.Textarea(attrs={'rows': 3}),
     }
+

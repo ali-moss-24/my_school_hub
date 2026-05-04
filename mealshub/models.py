@@ -16,7 +16,7 @@ WEEK_CHOICES = [
 
 DAY_CHOICES = [
     ('Mon', 'Monday'),
-    ('Tue', 'Tueday'),
+    ('Tue', 'Tuesday'),
     ('Wed', 'Wednesday'),
     ('Thu', 'Thursday'),
     ('Fri', 'Friday'),

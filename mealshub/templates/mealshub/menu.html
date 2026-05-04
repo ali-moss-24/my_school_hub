@@ -83,9 +83,41 @@
         background: #584fd6;
     }
 
+    .order-button {
+        display: inline-block;
+        margin-top: 6px;
+        padding: 6px 10px;
+        background: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 0.9rem;
+    }
+
+    .order-button:hover {
+        background: #0056b3;
+    }
+
+    
+
 </style>
 
 <h1>Week {{ week_number }} Menu</h1>
+{% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <p style="color: red;"><strong>{{ message }}</strong></p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<form method="POST" action="{% url 'weekly_order_submit' week_number %}">
+    {% csrf_token %}
+
+    <div class="student-block">
+        <label><strong>Student Name</strong></label><br>
+        <input type="text" name="student" required>
+    </div>
 
 <div class="week-container">
     {% for day, meals in grouped_meals.items %}
@@ -101,14 +133,21 @@
     {% if meals %}
         {% for meal in meals %}
             <div class="meal-item">
+                <label>
+                   <input type="checkbox" name="meal_{{ day }}" value="{{ meal.id }}">
+
                     <strong>{{ meal.name }}</strong><br>
                     {{ meal.description }}<br>
-                    £{{ meal.price }}
+                    £{{ meal.price }}<br>
+                </label>
             </div>
-            {% endfor %}
+         {% endfor %}
     {% else %}
         <p>No meals for this day.</p>
     {% endif %}
   </div>  
 {% endfor %}
 </div>
+
+    <button type="submit" class="order-button">Submit Weekly Order</button>
+</form>
