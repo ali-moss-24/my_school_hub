@@ -5,8 +5,8 @@
 
 
 
-MySchoolHub is a modular digital platform designed to support key areas of school life through simple, accessible tools.
-This project focuses on the first core module: MealsHub, a student‑driven meal‑ordering system that helps schools manage daily meal selections more efficiently.
+MySchoolHub is the first modular of the **MySchoolHub** platform - a simple, school-friendly system that allows students (or parents) to select meals for the school week.  
+It replaces manual paper-based meal choices with a clean digital workflow that reduces admin time, improves accuracy, and helps kitchen staff plan more efficiently.
 
 MealsHub allows students to log in and choose their meals for the week, while kitchen staff receive accurate daily totals broken down by meal type and dietary requirements. This reduces manual counting, minimises food waste, and supports smoother kitchen planning. The system is designed to be clear, user‑friendly, and appropriate for a school environment.
 
@@ -30,25 +30,28 @@ MealsHub forms the foundation of the wider MySchoolHub ecosystem, demonstrating 
 ---
 
 
-# 🧩 Features
+# 🧩 Current Features
 
 **Student Features**
 
 - View weekly menu
-- Select meals for each day
-- Change or cancel selections
-- View dietary information
-- Kitchen Staff Features
-- View daily meal totals
-- Breakdown by meal type (vegetarian, vegan, halal, gluten‑free)
-- Dietary alerts
-- Optional print/export summary
+- Select **one meal per day**
+- Submit all choices in one form
+- "No Meal" option for each day
+- Mobile-friendly layout
+
+**Kitchen Staff Features**
+
+- View daily totals (via Django admin for now)
+- See breakdown by meal type
+- Track dietary requirements
 
 **Admin Features**
 
 - Add/edit meals
-- Set availability dates
-- Manage dietary tags
+- Set availability by day/week
+- Add dietary tags (V, GF, Halal, etc)
+- Manage "No Meal" option
 
 ---
 
@@ -81,30 +84,20 @@ MealsHub forms the foundation of the wider MySchoolHub ecosystem, demonstrating 
 
 ---
 
-# 🖥️ User Interface Mockups
+# 🖥️ Interface Preview (Current Bahaviour)
 
+ **Weekly Menu Page**
+- Days grouped Mon-Fri
+- Each day shows avaiable meals
+- One checkbox per meal
+- "No Meal" option included
+- Student name field at the top
+- One "Submit Weekly Order" button
 
-**Student Dashboard**
+**Order Success Page**
 
+- Simple confirmation screen
 
-Monday
-
-• Chicken Pasta        [ Select Meal ] 
-
-• Veggie Wrap (V)      [ Select Meal ]
-
-• Jacket Potato (GF)   [ Select Meal ]
-
-
-**Kitchen Dashboard**
-
-Total Meals Today: 142
-
-Roast Chicken .......... 68
-
-Quorn Roast (V) ........ 41
-
-Tomato Pasta (V) ....... 33
 
 ---
 
