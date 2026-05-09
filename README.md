@@ -101,34 +101,21 @@ MealsHub forms the foundation of the wider MySchoolHub ecosystem, demonstrating 
 
 ---
 
-# 🌱 Future Enhancements
+# 🌱 Planned Enhancements
 
-**Parent Ordering**
+**Short-Term**
 
-Parents will be able to log in, view menus, and select meals for their children.
+- Two column mobile layout for meal options
+- Order summary before submission
+- Kitchen dashboard with totals
 
-**SafeGuardHub (CPOMS‑Style Module)**
-
-A secure safeguarding and behaviour logging system for authorised staff only.
-
-Features may include:
-
-- Logging concerns
-- Recording disclosures
-- Tracking follow‑up actions
-- Behaviour incident history
-
-**AttendanceHub**
-
-Digital registers and absence tracking.
-
-**CommsHub**
-
-Messaging, announcements, and parent communication.
-
-**UniformHub**
-
-School shop for uniform orders.
+**Long-Term**
+- Parent login system
+- Student accounts
+- SafeGauardHub (CPOMS-style module)
+- AttendanceHub
+- CommsHub
+- UniformHub
 
 ---
 
@@ -259,8 +246,8 @@ Error handling
 
 A full testing table can be added later.
 
+---
 
-
-👤 Author
-Alison Mossop  
+# 👤 Author
+**Alison Mossop**  
 MySchoolHub — MealsHub Module

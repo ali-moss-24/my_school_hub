@@ -6,6 +6,7 @@
     <a href="/menu/3/" class="week-btn {% if week_number == 3 %}active{% endif %}">Week 3</a> 
 </div>
 
+
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -97,8 +98,7 @@
     .order-button:hover {
         background: #0056b3;
     }
-
-    
+   
 
 </style>
 
@@ -151,3 +151,27 @@
 
     <button type="submit" class="order-button">Submit Weekly Order</button>
 </form>
+
+<script>
+console.log("SCRIPT IS RUNNING");
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+
+        days.forEach(day => {
+            const checkboxes = document.querySelectorAll(`input[name="meal_${day}"]`);
+
+            checkboxes.forEach(box => {
+                box.addEventListener("change", function () {
+                    const selected = Array.from(checkboxes).filter(cb => cb.checked);
+
+                    if (selected.length > 1) {
+                        this.checked = false;
+                        alert(`You can only select ONE meal for ${day}.`);
+
+                    }
+                });
+            });
+        });
+    });
+</script>

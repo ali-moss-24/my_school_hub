@@ -36,25 +36,25 @@ def order_success(request):
 # Weekly order
 def weekly_order_submit(request, week_number):
     if request.method == 'POST':
-        
         days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
 
-# Validate meals FIRST (so error shows if name is missing)  
+# 1. Validate meals FIRST 
         for day in days:
             selected = request.POST.getlist(f"meal_{day}")
             if len(selected) > 1:
                 messages.error(request, f"Please select only ONE meal for the {day}.")
                 return redirect('menu', week_number=week_number)
 
-# Now validate student name
+# 2. Validate student name
         student = request.POST.get('student')
         if not student:
             messages.error(request, "Please enter the student name.")
             return redirect('menu', week_number=week_number)
 
             
-# Create orders (one per day)
+# 3. Create orders (one per day)
         for day in days:
+            selected = request.POST.getlist(f"meal_{day}")
             if len(selected) == 1:
                 meal = Meal.objects.get(id=selected[0])
                 Order.objects.create(
