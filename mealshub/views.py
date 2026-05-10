@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.contrib.admin.views.decorators import staff_member_required
 from .models import Meal, Order
 
 
@@ -83,7 +84,7 @@ def weekly_order_submit(request, week_number):
 def order_success(request):
     return render(request, 'mealshub/order_success.html')
 
-# Order List
+# @staff_member_required
 def orders_list(request):
     day_filter = request.GET.get('day')
     orders = Order.objects.all()

@@ -56,30 +56,48 @@ MealsHub forms the foundation of the wider MySchoolHub ecosystem, demonstrating 
 
 # 🗂️ Database Structure
 
-**users**
+## 🗂️ Database Structure (ERD)
 
-- id
-- name
-- email
-- password
-- role (student, kitchen, admin)
+```mermaid
+flowchart TD
 
+    subgraph MealsHubDB[MealsHub Database]
+        Users[[
+            Users
+            ---
+            id
+            name
+            email
+            password
+            role
+        ]]
 
-**meals**
+        Meals[[
+            Meals
+            ---
+            id
+            name
+            description
+            dietary_type
+            day_available
+            week_available
+        ]]
 
-- id
-- name
-- description
-- dietary_type
-- date_available
+        Orders[[
+            Orders
+            ---
+            id
+            user_id (FK)
+            meal_id (FK)
+            date
+            created_at
+        ]]
+    end
 
-**orders**
+    Users --> Orders
+    Meals --> Orders
+```
 
-- id
-- user_id
-- meal_id
-- date
-- created_at
 
 ---
 
@@ -273,6 +291,17 @@ python manage.py runserver
 
 ---
 
+# 📸 Screenshots
+
+### Homepage
+A screenshot showing the homepage with the logo, tagline, and navigation to MealsHub.
+
+![Homepage Screenshot](documentation/homepage.png)
+
+
+---
 # 👤 Author
 **Alison Mossop**  
 MySchoolHub — MealsHub Module
+
+[def]: documentation/screenshot/home_page.png
