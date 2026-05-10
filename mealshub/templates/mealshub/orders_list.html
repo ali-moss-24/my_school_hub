@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>All Orders</h1>
+
+<form method="GET" style="margin-bottom: 20px;">
+    <label><strong>Filter by Day:</strong></label>
+    <select name="day" onchange="this.form.submit()">
+        <option value="">All Days</option>
+        <option value="Mon" {% if request.GET.day == "Mon" %}selected{% endif %}>Monday</option>
+        <option value="Tue" {% if request.GET.day == "Tue" %}selected{% endif %}>Tuesday</option>
+        <option value="Wed" {% if request.GET.day == "Wed" %}selected{% endif %}>Wednesday</option>
+        <option value="Thu" {% if request.GET.day == "Thu" %}selected{% endif %}>Thursday</option>
+        <option value="Fri" {% if request.GET.day == "Fri" %}selected{% endif %}>Friday</option>
+    </select>
+</form>
+
+<h3>Daily Totals</h3>
+<ul>
+    <li>Monday: {{ totals.Mon }}</li>
+    <li>Tuesday: {{ totals.Tue }}</li>
+    <li>Wednesday: {{ totals.Wed }}</li>
+    <li>Thursday: {{ totals.Thu }}</li>
+    <li>Friday: {{ totals.Fri }}</li>
+</ul>
+
+
+<table>
+    <tr>
+        <th>Student</th>
+        <th>Class</th>
+        <th>Meal</th>
+        <th>Day</th>
+        <th>Week</th>
+    </tr>
+
+    {% for order in orders %}
+    <tr>
+        <td>{{ order.student }}</td>
+        <td>{{ order.class_name }}</td>
+        <td>{{ order.meal.name }}</td>
+        <td>{{ order.meal.get_day_display }}</td>
+        <td>{{ order.week_number }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="4">No orders found.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{% url 'home' %}">Return Home</a>
+{% endblock %}

@@ -47,6 +47,7 @@ class Meal(models.Model):
 
 class Order(models.Model):
     student = models.CharField(max_length=100)
+    class_name = models.CharField(max_length=20, blank=True, null=True)
     meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
     week_number = models.IntegerField()
     notes = models.TextField(blank=True)

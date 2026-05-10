@@ -29,10 +29,6 @@ def menu_view(request, week_number):
     return render(request, "mealshub/menu.html", context)
 
 
-# Sucess page
-def order_success(request):
-    return render(request, 'mealshub/order_success.html')
-
 # Weekly order
 def weekly_order_submit(request, week_number):
     if request.method == 'POST':
@@ -44,6 +40,9 @@ def weekly_order_submit(request, week_number):
         if not student:
             messages.error(request, "Please enter the student's name.")
             return redirect('menu', week_number=week_number)
+        
+        # GET CLASS NAME
+        class_name = request.POST.get('class_name')
 
         # 2. VALIDATE MEAL SELECTIONS
         selected_meals = []
@@ -70,6 +69,7 @@ def weekly_order_submit(request, week_number):
             meal = Meal.objects.get(id=meal_id)
             Order.objects.create(
                 student=student,
+                class_name=class_name,
                 meal=meal,
                 week_number=week_number
             )
@@ -78,3 +78,30 @@ def weekly_order_submit(request, week_number):
 
     # If GET request → redirect safely
     return redirect('menu', week_number=week_number)
+
+# Success page
+def order_success(request):
+    return render(request, 'mealshub/order_success.html')
+
+# Order List
+def orders_list(request):
+    day_filter = request.GET.get('day')
+    orders = Order.objects.all()
+
+    if day_filter:
+        orders = orders.filter(meal__day=day_filter)
+
+    totals = {
+        "Mon": orders.filter(meal__day="Mon").count(),
+        "Tue": orders.filter(meal__day="Tue").count(),
+        "Wed": orders.filter(meal__day="Wed").count(),
+        "Thu": orders.filter(meal__day="Thu").count(),
+        "Fri": orders.filter(meal__day="Fri").count(),
+    }
+
+    context = {
+        "orders": orders,
+        "totals": totals
+    }
+
+    return render(request, "mealshub/orders_list.html", context)
