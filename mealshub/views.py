@@ -36,32 +36,45 @@ def order_success(request):
 # Weekly order
 def weekly_order_submit(request, week_number):
     if request.method == 'POST':
+
         days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
 
-# 1. Validate meals FIRST 
-        for day in days:
-            selected = request.POST.getlist(f"meal_{day}")
-            if len(selected) > 1:
-                messages.error(request, f"Please select only ONE meal for the {day}.")
-                return redirect('menu', week_number=week_number)
-
-# 2. Validate student name
-        student = request.POST.get('student')
+        # 1. VALIDATE STUDENT NAME
+        student = request.POST.get('student', '').strip()
         if not student:
-            messages.error(request, "Please enter the student name.")
+            messages.error(request, "Please enter the student's name.")
             return redirect('menu', week_number=week_number)
 
-            
-# 3. Create orders (one per day)
+        # 2. VALIDATE MEAL SELECTIONS
+        selected_meals = []
+
         for day in days:
             selected = request.POST.getlist(f"meal_{day}")
+
+            # More than one selected for a day → invalid
+            if len(selected) > 1:
+                messages.error(request, f"Please select only ONE meal for {day}.")
+                return redirect('menu', week_number=week_number)
+
+            # Exactly one selected → store it
             if len(selected) == 1:
-                meal = Meal.objects.get(id=selected[0])
-                Order.objects.create(
-                    student=student,
-                    meal=meal,
-                    date=meal.date
-                )
+                selected_meals.append(selected[0])
+
+        # No meals selected at all → invalid
+        if not selected_meals:
+            messages.error(request, "Please select at least one meal for the week.")
+            return redirect('menu', week_number=week_number)
+
+        # 3. CREATE ORDERS
+        for meal_id in selected_meals:
+            meal = Meal.objects.get(id=meal_id)
+            Order.objects.create(
+                student=student,
+                meal=meal,
+                week_number=week_number
+            )
 
         return redirect('order_success')
+
+    # If GET request → redirect safely
     return redirect('menu', week_number=week_number)

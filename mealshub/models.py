@@ -25,7 +25,7 @@ DAY_CHOICES = [
 class Student(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    class_name = models.CharField(max_length=50)
+    class_name = models.CharField(max_length=50, choices=CLASS_CHOICES)
     allergies = models.TextField(blank=True)
 
     def __str__(self):
@@ -46,10 +46,10 @@ class Meal(models.Model):
 
 
 class Order(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    student = models.CharField(max_length=100)
     meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
-    date = models.DateField()
+    week_number = models.IntegerField()
     notes = models.TextField(blank=True)
 
     def __str__(self):
-        return f"{self.student} ordered {self.meal} on {self.date}"
+        return f"{self.student} ordered {self.meal} (Week {self.week_number})"
