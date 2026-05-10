@@ -304,4 +304,3 @@ A screenshot showing the homepage with the logo, tagline, and navigation to Meal
 **Alison Mossop**  
 MySchoolHub — MealsHub Module
 
-[def]: documentation/screenshot/home_page.png
