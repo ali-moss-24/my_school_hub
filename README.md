@@ -34,7 +34,7 @@ MealsHub forms the foundation of the wider MySchoolHub ecosystem, demonstrating 
 
 **Student Features**
 
-- View weekly menu
+- View weekly menu (Mon-Fri)
 - Select **one meal per day**
 - Submit all choices in one form
 - "No Meal" option for each day
@@ -42,16 +42,15 @@ MealsHub forms the foundation of the wider MySchoolHub ecosystem, demonstrating 
 
 **Kitchen Staff Features**
 
-- View daily totals (via Django admin for now)
-- See breakdown by meal type
-- Track dietary requirements
+- View **all order**
+- View **daily totals**
+- See meal names, classes, and week numbers
 
 **Admin Features**
 
-- Add/edit meals
-- Set availability by day/week
-- Add dietary tags (V, GF, Halal, etc)
-- Manage "No Meal" option
+- Add/edit/delete meals
+- Set meal day + week
+- View all orders in admin
 
 ---
 
@@ -226,25 +225,51 @@ cd C:\Users\mosso\Documents\my_school_hub
 venv\Scripts\activate
 python manage.py runserver
 ```
+---
+# 📦 Deployment
 
+### Local Deployment
+
+1. Clone the repository
+2. Create and activate a virtual enviorment
+3. Install dependencies
+4. Run migrations
+5. Start the developement server
+
+### Heroku Deployment
+
+- App deployed using Herku
+- Uses Gunicorn + Whitenoise
+- Static files collected using ```collectstatic```
+- Enviroment variables set in Heroku dashboard
+- App accessible via live URL
 ---
 
 # 🧪 Testing
-Testing will include:
+| Feature | Test | Expected Result | Actual Result | Pass |
+| --- | --- | --- | --- | --- |
+| Weekly order form | Submit 5 meals (Mon–Fri) | All 5 orders saved | Works correctly | ✔ |
+| Weekly order form | Select “No Meal” | Order saved with correct meal | Works correctly | ✔ |
+| Day filter | Select Monday | Only Monday orders shown | Works correctly | ✔ |
+| Day filter | Clear filter | All orders shown | Works correctly | ✔ |
+| Daily totals | Filter by day | Totals update correctly | Works correctly | ✔ |
+| Admin: Add meal | Add new meal | Appears in weekly form | Works correctly | ✔ |
+| Admin: Edit meal | Change name/day | Updates in form + orders | Works correctly | ✔ |
+| Mobile layout | View on phone | Table scrolls, dropdown readable | Works correctly | ✔ |
 
-Form validation
 
-CRUD operations
+### Validation Testing
 
-Role‑based access
+- HTML validatioed using W£C validator
+- CSS validated using W£C CSS validator
+- No major errors found
 
-Meal selection logic
+### User Story Testing
 
-Totals calculation
-
-Error handling
-
-A full testing table can be added later.
+- Students can select meals for the week
+- Kitchen staff can view totals
+- Admin can manage meals
+- All user stories met
 
 ---
 
