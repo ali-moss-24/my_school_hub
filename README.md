@@ -56,38 +56,25 @@ MealsHub forms the foundation of the wider MySchoolHub ecosystem, demonstrating 
 
 # 🗂️ Database Structure
 
-## 🗂️ Database StructureS
+``` mermaid
 
 flowchart TD
 
-    subgraph DatabaseStructure[Database Structure]
-
-        MealsTable[
-            Meals
-            ---
-            id
-            name
-            description
-            category
-            week
-            day
-            is_available
-        ]
-
-        OrdersTable[
-            Orders
-            ---
-            id
-            student
-            meal_id - FK
-            date
-            created_at
-        ]
-
+    subgraph ModelsLayer[Models]
+        MealsModel[Meals Model]
+        OrdersModel[Orders Model]
     end
 
+    subgraph DatabaseStructure[Database Structure]
+        MealsTable[Meals Table]
+        OrdersTable[Orders Table]
+    end
+
+    MealsModel --> MealsTable
+    OrdersModel --> OrdersTable
     MealsTable --> OrdersTable
 
+```
 
 
 
