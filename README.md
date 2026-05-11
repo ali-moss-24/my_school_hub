@@ -342,7 +342,13 @@ A screenshot showing the meal selection from a mobile device, demonstrating resp
 
 ![Mobile Menu Order](documentation/mobile-menu-order.png)
 
+---
 
+# 🏁 Project Status
+
+MealsHub is fully functional and deployed, providing a complete weekly meal-ordering workflow for students along with admin tools for managing meals and viewing orders.
+
+The current version focuses on core functionality, with a clear roadmap for future development as part of the wider MySchoolHUb platform. Planned enhancements include improved mobile layout, order summaries, and a dedicated kitchen dashboard, followed by long-term modules such as SafeGuardHub, AttendanceHub, and CommsHub.
 
 
 ---
