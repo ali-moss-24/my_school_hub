@@ -58,19 +58,9 @@ MealsHub forms the foundation of the wider MySchoolHub ecosystem, demonstrating 
 
 ## 🗂️ Database Structure (ERD)
 
-```mermaid
 flowchart TD
 
     subgraph MealsHubDB[MealsHub Database]
-        Users[[
-            Users
-            ---
-            id
-            name
-            email
-            password
-            role
-        ]]
 
         Meals[[
             Meals
@@ -78,25 +68,26 @@ flowchart TD
             id
             name
             description
-            dietary_type
-            day_available
-            week_available
+            category
+            week
+            day
+            is_available
         ]]
 
         Orders[[
             Orders
             ---
             id
-            user_id (FK)
-            meal_id (FK)
+            student
+            meal_id - FK
             date
             created_at
         ]]
+
     end
 
-    Users --> Orders
     Meals --> Orders
-```
+
 
 
 ---
@@ -297,6 +288,46 @@ python manage.py runserver
 A screenshot showing the homepage with the logo, tagline, and navigation to MealsHub.
 
 ![Homepage Screenshot](documentation/homepage.png)
+
+### Menu Page - Week 1
+A screenshot showing the weekly menu with class selector, student name field, and meal options.
+
+![Week 1 Menu](documentation/week1-menu.png)
+
+### Validation Error
+A screenshot showing the validation message that appears when a user selects more than one meal for the same day or submits the form incorrectly.
+
+![Validation Error](documentation/validation-error.png)
+
+### Order Success
+A screenshot showing the confirmation page displayed after a meal is successfully submitted
+
+![Order Success](documentation/order-success.png)
+
+### Admin Login
+A screenshot showing the Django admin login page authoised staff sign in.
+
+![Admin Login](documentation/admin-login.png)
+
+### Admin Site
+A screenshot showing the Django admin dashboard where staff manage meals, orders and users.
+
+![Admin Site](documentation/site-admin.png)
+
+### Student Orders
+A screenshot showing the list of all student meals, including student names, and submission date.
+
+### Admin Meals
+A screenshot showing the Meals section in the Django admin where staff can add, edit, and manage meal options.
+
+![Admin Meals](documentation/meals-admin.png)
+
+### Mobile - Menu Order
+A screenshot showing the meal selection from a mobile device, demonstrating responsive layout and usability for parents ordering meals on the go.
+
+![Mobile Menu Order](documentation/mobile-menu-order.png)
+
+
 
 
 ---
