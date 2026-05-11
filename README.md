@@ -56,13 +56,13 @@ MealsHub forms the foundation of the wider MySchoolHub ecosystem, demonstrating 
 
 # 🗂️ Database Structure
 
-## 🗂️ Database Structure (ERD)
+## 🗂️ Database StructureS
 
 flowchart TD
 
-    subgraph MealsHubDB[MealsHub Database]
+    subgraph DatabaseStructure[Database Structure]
 
-        Meals[[
+        MealsTable[
             Meals
             ---
             id
@@ -72,9 +72,9 @@ flowchart TD
             week
             day
             is_available
-        ]]
+        ]
 
-        Orders[[
+        OrdersTable[
             Orders
             ---
             id
@@ -82,11 +82,12 @@ flowchart TD
             meal_id - FK
             date
             created_at
-        ]]
+        ]
 
     end
 
-    Meals --> Orders
+    MealsTable --> OrdersTable
+
 
 
 
