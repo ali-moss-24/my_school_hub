@@ -5,25 +5,27 @@
 
 
 
-MySchoolHub is the first modular of the **MySchoolHub** platform - a simple, school-friendly system that allows students (or parents) to select meals for the school week.  
+MySchoolHub is the first module of the **MySchoolHub** platform - a simple, school-friendly system that allows students (or parents) to select meals for the school week.  
 It replaces manual paper-based meal choices with a clean digital workflow that reduces admin time, improves accuracy, and helps kitchen staff plan more efficiently.
 
-MealsHub allows students to log in and choose their meals for the week, while kitchen staff receive accurate daily totals broken down by meal type and dietary requirements. This reduces manual counting, minimises food waste, and supports smoother kitchen planning. The system is designed to be clear, user‑friendly, and appropriate for a school environment.
+Students can select thier meals for the week, while kitchen staff receive accurate daily totals broken down by meal type. This reduces manual counting, minimises food waste, and supports smoother kitchen planning.
 
 Although this project focuses on the MealsHub module, MySchoolHub is intentionally designed to be scalable. Future modules may include attendance tracking, communication tools, and a safeguarding system similar to CPOMS (SafeGuardHub). This modular approach ensures the platform can grow over time while keeping each section focused and manageable.
 
 ---
 
 # 🎯 Project Rationale
-Many schools still rely on manual processes for collecting meal choices, which can lead to errors, delays, and unnecessary food waste. Since meals are currently free and students select their own meals, MealsHub provides a simple digital solution that:
+Many schools still rely on manual processes for collecting meal choices, which can lead to errors, delays, and unnecessary food waste. With meals priced individually, accuracy becomes even more important - incorrect orders can lead to financial discrepancies as well as wasted food. Mealshub provides a simple digital solution that:
 
-Gives students an easy way to choose meals
+- Gives students an easy way to choose meals
 
-Provides kitchen staff with clear, accurate totals
+- Ensures accurate meal counts for kitchen planning
 
-Reduces administrative workload
+- Reduces administrative workload
 
-Supports dietary needs and menu planning
+- Supports dietary needs and menu planning
+
+- Helps avoid incorrect charges or missing payments
 
 MealsHub forms the foundation of the wider MySchoolHub ecosystem, demonstrating how digital tools can streamline everyday school operations.
 
@@ -84,7 +86,7 @@ flowchart TD
 
  **Weekly Menu Page**
 - Days grouped Mon-Fri
-- Each day shows avaiable meals
+- Each day shows avaliable meals
 - One checkbox per meal
 - "No Meal" option included
 - Student name field at the top
@@ -99,19 +101,33 @@ flowchart TD
 
 # 🌱 Planned Enhancements
 
-**Short-Term**
+**Short-Term Improvements**
 
-- Two column mobile layout for meal options
-- Order summary before submission
-- Kitchen dashboard with totals
+These updates focus on improving usability and giving staff clearer, more efficient access to information.
 
-**Long-Term**
-- Parent login system
-- Student accounts
-- SafeGauardHub (CPOMS-style module)
-- AttendanceHub
-- CommsHub
-- UniformHub
+- **Two column mobile layout for meal options**  
+Enhances readability on smaller screens and reduces scrolling.
+- **Order summary before submission**  
+Allows students/parents to review their selection and avoid mistakes.
+- **Kitchen dashboard with totals**  
+Provides a dedicated view showing daily and weekly totals, improving kitchen planning.
+
+**Long-Term Improvements**
+
+These features expand the MealsHub into a full, modular school-wide platform.
+
+- **Parent login system**  
+Enables authenticated access, personalised orders, and order history.
+- **Student accounts**
+Supports individual profiles, saved preferences, and secure ordering.
+- **SafeGauardHub (CPOMS-style module)**  
+A future safeguarding system intgrated into the MuSchoolHub ecosystem.
+- **AttendanceHub**  
+Digital attendance tracking for classes and year groups.
+- **CommsHub**  
+Messaging and announcements for parents, staff, and students.
+- **UniformHub**  
+A simple ordering and management system for school uniform items.
 
 ---
 
@@ -119,7 +135,7 @@ flowchart TD
 
 - **Python** - core programming language
 - **Django** - web framework for models, views, admin, and routing
-- **HTML/CSS** - fromt-end structure and styling
+- **HTML/CSS** - front-end structure and styling
 - **SQLite** - default development database
 - **Virtual environment (.venv)** - dependency isolation
 
@@ -157,7 +173,7 @@ flowchart TD
 
 # 📦 Setup & Installation
 
-### 1. Create and activate a virtual enviroment
+### 1. Create and activate a virtual environment
 
 **Navigate to the project folder**
 
@@ -165,7 +181,7 @@ flowchart TD
 cd C:\Users\mosso\Documents\my_school_hub
 ```
 
-**Create a virtual enviroment (only needed the first time)**
+**Create a virtual environment (only needed the first time)**
 
 ```
 python -m venv venv
@@ -228,17 +244,17 @@ python manage.py runserver
 ### Local Deployment
 
 1. Clone the repository
-2. Create and activate a virtual enviorment
+2. Create and activate a virtual enviornment
 3. Install dependencies
 4. Run migrations
 5. Start the developement server
 
 ### Heroku Deployment
 
-- App deployed using Herku
+- App deployed using Heroku
 - Uses Gunicorn + Whitenoise
 - Static files collected using ```collectstatic```
-- Enviroment variables set in Heroku dashboard
+- Environment variables set in Heroku dashboard
 - App accessible via live URL
 ---
 
@@ -257,7 +273,7 @@ python manage.py runserver
 
 ### Validation Testing
 
-- HTML validatioed using W£C validator
+- HTML validatioed using W3C validator
 - CSS validated using W£C CSS validator
 - No major errors found
 
@@ -270,6 +286,17 @@ python manage.py runserver
 
 ---
 
+# ⚠️ Known Issues/Limitations
+
+- No authentication yet - students/parents access the menu without loggin in.
+- No parent accounts - all orders are submitted anonymously with a typed student name.
+- No kitchen dashboard totals page - totals are visable but not yet in a dedicated dashboard.
+- No order summary before submission - users cannot review choices before confirming.
+- No email confirmation - orders are saved but no notifu=ication is sent.
+- No payment integration - meals include prices, but payments are not processed
+- No user-specific history - students cannot view or edit previous orders
+- Admin area only for staff - no custom admin dashboard for non-technical users
+---
 # 📸 Screenshots
 
 ### Homepage
