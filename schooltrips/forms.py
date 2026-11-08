@@ -6,6 +6,7 @@ class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
         fields = [
+            'trip',
             'parent_name',
             'consent',
             'payment_choice'
