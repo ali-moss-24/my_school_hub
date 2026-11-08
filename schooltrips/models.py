@@ -26,5 +26,12 @@ class Booking(models.Model):
        choices=PAYMENT_CHOICES
     )
 
+    contribution_amount = models.DecimalField(
+        max_digits=6,
+        decimal_places=2,
+        blank=True,
+        null=True
+    )
+
     def __str__(self):
         return f"{self.parent_name} - {self.trip.name}"

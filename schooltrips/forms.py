@@ -9,5 +9,6 @@ class BookingForm(forms.ModelForm):
             'trip',
             'parent_name',
             'consent',
-            'payment_choice'
+            'payment_choice',
+            'contribution_amount',
         ]
