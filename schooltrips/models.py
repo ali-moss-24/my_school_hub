@@ -20,6 +20,7 @@ class Trip(models.Model):
 class Booking(models.Model):
     trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
     parent_name = models.CharField(max_length=100)
+    medical_notes = models.TextField(blank=True)
     consent = models.BooleanField(default=False)
     payment_choice = models.CharField(
        max_length=10,
