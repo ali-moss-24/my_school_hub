@@ -5,78 +5,132 @@
 
 
 
-MySchoolHub is the first module of the **MySchoolHub** platform - a simple, school-friendly system that allows students (or parents) to select meals for the school week.  
-It replaces manual paper-based meal choices with a clean digital workflow that reduces admin time, improves accuracy, and helps kitchen staff plan more efficiently.
+MySchoolHub is a modular school management platform designed to simplify everyday school processes through a collection of dedicated hubs
 
-Students can select thier meals for the week, while kitchen staff receive accurate daily totals broken down by meal type. This reduces manual counting, minimises food waste, and supports smoother kitchen planning.
+The current version includes:
 
-Although this project focuses on the MealsHub module, MySchoolHub is intentionally designed to be scalable. Future modules may include attendance tracking, communication tools, and a safeguarding system similar to CPOMS (SafeGuardHub). This modular approach ensures the platform can grow over time while keeping each section focused and manageable.
+- Mealshub - a weekly school meal ordering system.
+- SchoolTripsHub - a school trip booking and parental consent system.
+- User Authenication - secure login functionality using Django's built-in authentication system.
+
+
+MySchoolHub has been designed with future expansion in mind. Additional modules such as AttendanceHub and SafeGuardingHub are planned for future development, allowing the platform to grow while maintaining a clear and manageable structure.
+
+The project aims to reduce paperwork, improve data accuracy, streamline administarative tasks, and provide a more efficient experience for staff, pupils and parents.
 
 ---
 
 # 🎯 Project Rationale
-Many schools still rely on manual processes for collecting meal choices, which can lead to errors, delays, and unnecessary food waste. With meals priced individually, accuracy becomes even more important - incorrect orders can lead to financial discrepancies as well as wasted food. Mealshub provides a simple digital solution that:
+Many schools still rely on paper forms and manual processes for routine activities such as meal ordering and school trip consent.
 
-- Gives students an easy way to choose meals
+These processes can result in:
 
-- Ensures accurate meal counts for kitchen planning
+- Administrative workload
+- Lost paperwork
+- Inaccurate records
+- Delays in communication
+- Difficulties tracking consent and payments
 
-- Reduces administrative workload
+MySchoolHub provides a digital solution that centralises these activities into a single web application.
 
-- Supports dietary needs and menu planning
+MealsHub supports efficient meal ordering and planning while SchoolTripsHub allows parents to view trips, provide consent, supply medical information and record payment intentions.
 
-- Helps avoid incorrect charges or missing payments
-
-MealsHub forms the foundation of the wider MySchoolHub ecosystem, demonstrating how digital tools can streamline everyday school operations.
+The modular design allows new school services to be added over time without disrupting existing functionality.
 
 ---
 
 
 # 🧩 Current Features
 
-**Student Features**
+## MealsHub
 
-- View weekly menu (Mon-Fri)
-- Select **one meal per day**
-- Submit all choices in one form
-- "No Meal" option for each day
+### Parent/Student Features
+
+- View weekly menu option
+- Select one meal per day
+- Submit meal order
+- Use "No Meal" option where appropriate
 - Mobile-friendly layout
 
-**Kitchen Staff Features**
+### Kitchen Staff Features
 
-- View **all order**
-- View **daily totals**
-- See meal names, classes, and week numbers
+- View submitted orders
+- View meal totals
+- Review orders by week and day
 
-**Admin Features**
+### Admin Features
 
-- Add/edit/delete meals
-- Set meal day + week
-- View all orders in admin
+- Add meals
+- Edit meals
+- Delete meals
+- Manage meal availability
+- View submitted orders
+
+---
+
+## SchoolTripsHub
+
+### Parent Features
+
+- View available school trips
+- Book places on school trips
+- Provide parental consent
+- Submit medical information
+- Choose payment method
+- Enter voluntary contribution amounts
+- Receive booking confirmation
+
+### Admin Features
+
+- Create trips
+- Edit trip information
+- View bookings
+- View associated payment options
+- Review medical information and consent status
+
+---
+
+## Authentiation
+
+- User login functionality
+- Session management
+- Secure authentication using Django's built-in user model
+
 
 ---
 
 # 🗂️ Database Structure
 
-``` mermaid
+## Student
 
-flowchart TD
+Stores pupil information
 
-    subgraph ModelsLayer[Models]
-        MealsModel[Meals Model]
-        OrdersModel[Orders Model]
-    end
+## Meal
 
-    subgraph DatabaseStructure[Database Structure]
-        MealsTable[Meals Table]
-        OrdersTable[Orders Table]
-    end
+Stores meal details, availability, day and week
 
-    MealsModel --> MealsTable
-    OrdersModel --> OrdersTable
-    MealsTable --> OrdersTable
+## Order
 
-```
+Stores meal selections made by students and parents
+
+## Trip
+
+Stores school trip information including:
+
+- Name
+- Date
+- Price
+
+## Booking
+
+Stores school trip bookings including:
+
+- Trip
+- Parent name
+- Medical notes
+- Consent confirmation
+- Payment option
+- Contribution amount
 
 
 
@@ -99,36 +153,38 @@ flowchart TD
 
 ---
 
-# 🌱 Planned Enhancements
+# 🌱 Future Enhancements
 
-**Short-Term Improvements**
+## Planned Improvements
 
-These updates focus on improving usability and giving staff clearer, more efficient access to information.
+These features build upon the current functionality of MealsHub and SchoolTripsHub.
 
-- **Two column mobile layout for meal options**  
-Enhances readability on smaller screens and reduces scrolling.
-- **Order summary before submission**  
-Allows students/parents to review their selection and avoid mistakes.
-- **Kitchen dashboard with totals**  
-Provides a dedicated view showing daily and weekly totals, improving kitchen planning.
+- User registration functionality
+- Improved logout functionality
+- Online payment integration
+- Automatic trip selection when booking
+- Conditional display of contribution amount fields
+- Editable trip bookings
+- Booking cancellation functionality
+- User booking history
+- Kitchen dashboard with improved reporting
+- Order summary before meal submission
 
-**Long-Term Improvements**
+## Future Modules
 
-These features expand the MealsHub into a full, modular school-wide platform.
+These modules form part of the long-term vision for MySchoolHub.
 
-- **Parent login system**  
-Enables authenticated access, personalised orders, and order history.
-- **Student accounts**
-Supports individual profiles, saved preferences, and secure ordering.
-- **SafeGauardHub (CPOMS-style module)**  
-A future safeguarding system intgrated into the MuSchoolHub ecosystem.
-- **AttendanceHub**  
-Digital attendance tracking for classes and year groups.
-- **CommsHub**  
-Messaging and announcements for parents, staff, and students.
-- **UniformHub**  
-A simple ordering and management system for school uniform items.
+### AttendanceHub
+Digital attandance tracking for classes and year group.
 
+### SafeguardingHub
+A safeguarding and welfare recording system inspired by CPOMS.
+
+### CommsHub
+Communication system for parents, staff and students
+
+### UniformHub
+School uniform ordering and management functionality
 ---
 
 # 🛠️ Technologies Used
@@ -259,8 +315,11 @@ python manage.py runserver
 ---
 
 # 🧪 Testing
+
+## MealHub Testing
+
 | Feature | Test | Expected Result | Actual Result | Pass |
-| --- | --- | --- | --- | --- |
+| --------- | --------- | --------- | -------- | ------------ |
 | Weekly order form | Submit 5 meals (Mon–Fri) | All 5 orders saved | Works correctly | ✔ |
 | Weekly order form | Select “No Meal” | Order saved with correct meal | Works correctly | ✔ |
 | Day filter | Select Monday | Only Monday orders shown | Works correctly | ✔ |
@@ -271,31 +330,68 @@ python manage.py runserver
 | Mobile layout | View on phone | Table scrolls, dropdown readable | Works correctly | ✔ |
 
 
-### Validation Testing
+## SchoolTripsHub Testing
+
+ Feature | Test | Expected Result | Actual Result | Pass |
+|----------|----------|----------|----------|----------|
+| Trip List | Open SchoolTripsHub | Available trips displayed | Works correctly | ✔ |
+| Trip Booking | Select "Book This Trip" | Booking form displayed | Works correctly | ✔ |
+| Booking Form | Submit booking with valid information | Booking saved successfully | Works correctly | ✔ |
+| Medical Notes | Enter medical information | Medical notes saved in booking record | Works correctly | ✔ |
+| Consent | Tick parental consent checkbox | Consent recorded successfully | Works correctly | ✔ |
+| Payment Method | Select payment option | Selected option saved | Works correctly | ✔ |
+| Contribution Amount | Enter voluntary contribution amount | Amount saved correctly | Works correctly | ✔ |
+| Booking Confirmation | Submit booking form | Success page displayed | Works correctly | ✔ |
+| Admin View | View bookings in Django Admin | Booking appears in admin panel | Works correctly | ✔ |
+
+
+## Authentication Testing
+
+| Feature | Test | Expected Result | Actual Result | Pass |
+|----------|----------|----------|----------|----------|
+| Login | Valid credentials entered | User successfully logged in | Works correctly | ✔ |
+| Login | Invalid credentials entered | Login rejected and error shown | Works correctly | ✔ |
+| Login Redirect | Successful login | User redirected to homepage | Works correctly | ✔ |
+| Session Management | Access authenticated session after login | Session maintained | Works correctly | ✔ |
+
+## Validation Testing
 
 - HTML validatioed using W3C validator
 - CSS validated using W£C CSS validator
-- No major errors found
+- No major validation errors found
 
-### User Story Testing
+## User Story Testing
 
-- Students can select meals for the week
-- Kitchen staff can view totals
-- Admin can manage meals
-- All user stories met
+### MealHub
+
+- Students can select meals for the week ✔
+- Kitchen staff can view totals ✔
+- Admin can manage meals ✔
+
+### SchoolTripsHub
+
+- Parents can view available trips ✔
+- Parents can submit bookings ✔
+- Parents can provide consent ✔
+- Parents can add medical notes ✔
+- Parents can indicate payment intentions ✔
+
+### Authentication
+
+- Users can log in using valid credentials ✔
 
 ---
 
+
+
 # ⚠️ Known Issues/Limitations
 
-- No authentication yet - students/parents access the menu without loggin in.
-- No parent accounts - all orders are submitted anonymously with a typed student name.
-- No kitchen dashboard totals page - totals are visable but not yet in a dedicated dashboard.
-- No order summary before submission - users cannot review choices before confirming.
-- No email confirmation - orders are saved but no notifu=ication is sent.
-- No payment integration - meals include prices, but payments are not processed
-- No user-specific history - students cannot view or edit previous orders
-- Admin area only for staff - no custom admin dashboard for non-technical users
+- Registration functionality not yet implemented.
+- Logout requires further refinement.
+- Online payment processing not yet implemented.
+- Trip bookings cannot currently be edited by user.
+- Trip bookings cannot currently be deleted by user.
+- AttendanceHub and SafeguardingHub remain planned future modules.
 ---
 # 📸 Screenshots
 
@@ -346,9 +442,13 @@ A screenshot showing the meal selection from a mobile device, demonstrating resp
 
 # 🏁 Project Status
 
-MealsHub is fully functional and deployed, providing a complete weekly meal-ordering workflow for students along with admin tools for managing meals and viewing orders.
+MySchoolHub is currently a working mutli-app Django project consisting of MealsHub and SchoolTripsHub.
 
-The current version focuses on core functionality, with a clear roadmap for future development as part of the wider MySchoolHUb platform. Planned enhancements include improved mobile layout, order summaries, and a dedicated kitchen dashboard, followed by long-term modules such as SafeGuardHub, AttendanceHub, and CommsHub.
+MealsHub provides a complete meal-ordering workflow, while SchoolTripsHub provides a complete school trip booking workflow including parental consent, medical information and payment intentions.
+
+Authentication had been implemented through Django's built-in login system.
+
+Future development will focus on expenading authentication, adding full CRUD functionality, implementing online payment processing and developing additional modules such as AttendanceHub and SafeguardingHUb.
 
 
 ---
