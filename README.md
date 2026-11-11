@@ -159,7 +159,6 @@ Stores school trip bookings including:
 
 These features build upon the current functionality of MealsHub and SchoolTripsHub.
 
-- User registration functionality
 - Improved logout functionality
 - Online payment integration
 - Automatic trip selection when booking
@@ -343,6 +342,7 @@ python manage.py runserver
 | Contribution Amount | Enter voluntary contribution amount | Amount saved correctly | Works correctly | ✔ |
 | Booking Confirmation | Submit booking form | Success page displayed | Works correctly | ✔ |
 | Admin View | View bookings in Django Admin | Booking appears in admin panel | Works correctly | ✔ |
+| Protected Booking Page | Access booking page while logged out | User redirected to login page | Works correctly | ✔ |
 
 
 ## Authentication Testing
@@ -353,6 +353,18 @@ python manage.py runserver
 | Login | Invalid credentials entered | Login rejected and error shown | Works correctly | ✔ |
 | Login Redirect | Successful login | User redirected to homepage | Works correctly | ✔ |
 | Session Management | Access authenticated session after login | Session maintained | Works correctly | ✔ |
+| Registration | Valid user details entered | User account created and redirected to login page | Works correctly | ✔ |
+
+## CRUD Testing
+
+| Feature | Test | Expected Result | Actual Result | Pass |
+|----------|----------|----------|----------|----------|
+| Trip Create | Add new trip in admin | Trip saved | Works correctly | ✔ |
+| Trip Update | Edit trip information | Changes saved | Works correctly | ✔ |
+| Trip Delete | Delete trip | Trip removed | Works correctly | ✔ |
+| Booking Create | Submit booking form | Booking saved | Works correctly | ✔ |
+| Booking Update | Edit booking in admin | Changes saved | Works correctly | ✔ |
+| Booking Delete | Delete booking | Booking removed | Works correctly | ✔ |
 
 ## Validation Testing
 
@@ -390,7 +402,7 @@ python manage.py runserver
 # ⚠️ Known Issues/Limitations
 
 - Logout requires further refinement.
-- Online payment processing not yet implemented.
+- Online payment processing is planned for a future release.
 - Trip bookings cannot currently be edited by users.
 - Trip bookings cannot currently be deleted by users.
 - AttendanceHub and SafeguardingHub remain planned future modules.

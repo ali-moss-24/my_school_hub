@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Trip
 from .forms import BookingForm
+from django.contrib.auth.decorators import login_required
 
 
 def trip_list(request):
@@ -12,7 +13,7 @@ def trip_list(request):
         {'trips': trips}
     )
 
-
+@login_required
 def create_booking(request):
 
     if request.method == 'POST':
