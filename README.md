@@ -378,7 +378,10 @@ python manage.py runserver
 
 ### Authentication
 
-- Users can log in using valid credentials ✔
+- User registration functionality ✔
+- User login funcstionality ✔
+- Session management ✔
+- Secure authentication using Django's built-in user model ✔
 
 ---
 
@@ -386,7 +389,6 @@ python manage.py runserver
 
 # ⚠️ Known Issues/Limitations
 
-- Registration functionality not yet implemented.
 - Logout requires further refinement.
 - Online payment processing not yet implemented.
 - Trip bookings cannot currently be edited by users.

@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.admin.views.decorators import staff_member_required
 from .models import Meal, Order
 
@@ -106,3 +107,21 @@ def orders_list(request):
     }
 
     return render(request, "mealshub/orders_list.html", context)
+
+def register(request):
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+
+    else:
+        form = UserCreationForm()
+
+    return render(
+        request,
+        'registration/register.html',
+        {'form': form}
+    )

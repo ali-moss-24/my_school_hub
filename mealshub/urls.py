@@ -7,4 +7,5 @@ urlpatterns = [
     path('order/week/<int:week_number>/submit/', views.weekly_order_submit, name='weekly_order_submit'),
     path('order/success/', views.order_success, name='order_success'),
     path("orders/", views.orders_list, name="orders_list"),
+    path('register/', views.register, name='register'),
  ]
