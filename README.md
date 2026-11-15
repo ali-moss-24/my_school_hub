@@ -407,12 +407,16 @@ python manage.py runserver
 - Trip bookings cannot currently be deleted by users.
 - AttendanceHub and SafeguardingHub remain planned future modules.
 ---
-# 📸 Screenshots
+
+📸 Screenshots
 
 ### Homepage
-A screenshot showing the homepage with the logo, tagline, and navigation to MealsHub.
+A screenshot showing the homepage with the logo, tagline, and navigation to the avaiable modules.
 
 ![Homepage Screenshot](documentation/homepage.png)
+
+
+## Mealshub Screenshots
 
 ### Menu Page - Week 1
 A screenshot showing the weekly menu with class selector, student name field, and meal options.
@@ -429,8 +433,47 @@ A screenshot showing the confirmation page displayed after a meal is successfull
 
 ![Order Success](documentation/order-success.png)
 
+### Mobile - Menu Order
+A screenshot showing the meal selection from a mobile device, demonstrating responsive layout and usability for parents ordering meals on the go.
+
+![Mobile Menu Order](documentation/mobile-menu-order.png)
+
+---
+
+## SchoolTripsHub Screenshots
+
+### User Registration
+A screenshot showing the registration form to create a new MySchoolHub account.
+
+![User Registration](documentation/user-registration.png)
+
+### User Login
+
+A screenshot showing the login page used by registered users to access protected features.
+
+![User Login](documentation/user-login.png)
+
+### SchoolTripsHub Homepage
+A screenshot showing the SchoolTripsHub displaying available school trips.
+
+![SchoolTripsHub](documentation/schooltrips-home.png)
+
+### Trips Booking Form
+A screenshot showing the trip booking form including parental consent, medical notes and payment options.
+
+![Trip Booking Form](documentation/trip-booking-form.png)
+
+### Booking Success
+A screenshot showing the confirmation page displayed after a successful trip booking.
+
+![Booking Success](documentation/booking-success.png)
+
+---
+
+## Django Admin Screenshots
+
 ### Admin Login
-A screenshot showing the Django admin login page authoised staff sign in.
+A screenshot showing the Django admin login page used by authorised staff.
 
 ![Admin Login](documentation/admin-login.png)
 
@@ -439,18 +482,16 @@ A screenshot showing the Django admin dashboard where staff manage meals, orders
 
 ![Admin Site](documentation/site-admin.png)
 
-### Student Orders
-A screenshot showing the list of all student meals, including student names, and submission date.
 
 ### Admin Meals
 A screenshot showing the Meals section in the Django admin where staff can add, edit, and manage meal options.
 
 ![Admin Meals](documentation/meals-admin.png)
 
-### Mobile - Menu Order
-A screenshot showing the meal selection from a mobile device, demonstrating responsive layout and usability for parents ordering meals on the go.
+### Admin Trips and Bookings
+A screenshot showing the Trips and Bookings section in the Django admin where staff can add, edit, and review trip options.
 
-![Mobile Menu Order](documentation/mobile-menu-order.png)
+![Admin Trips and Bookings](documentation/admin-bookings.png)
 
 ---
 
