@@ -3,6 +3,8 @@ from .models import Trip
 from .forms import BookingForm
 from django.contrib.auth.decorators import login_required
 
+import stripe
+from django.conf import settings
 
 def trip_list(request):
     trips = Trip.objects.all()

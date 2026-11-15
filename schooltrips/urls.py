@@ -13,7 +13,7 @@ urlpatterns = [
 
     path(
         'payment-cancel/',
-        views.payment_cance;,
+        views.payment_cancel,
         name='payment_cancel'
     ),
 ]
