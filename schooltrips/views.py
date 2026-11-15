@@ -35,3 +35,15 @@ def create_booking(request):
         'schooltrips/booking_form.html',
         {'form': form}
     )
+
+def payment_success(request):
+    return render(
+        request,
+        'schooltrips/payment_success.html'
+    )
+
+def payment_cancel(request):
+    return render(
+        request,
+        'schooltrips/payment_cancel.html'
+    )
